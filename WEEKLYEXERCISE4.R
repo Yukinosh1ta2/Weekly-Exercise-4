@@ -9,6 +9,10 @@ library(tidyverse)
 library(ggplot2)
 olympics <- read_csv("Olympics.csv")
 
-# a. 
+# a
 olympics <- olympics %>%
   mutate(total.medals = gold + silver + bronze)
+# b
+gold_by_country <- olympics %>%
+  group_by(country) %>%
+  summarise(total_gold = sum(gold, na.rm = TRUE))
